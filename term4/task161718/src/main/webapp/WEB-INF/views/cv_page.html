@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HH</title>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/resources/js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" th:inline="text">
+        /*<![CDATA[*/
+        $(function(){
+     /*       $("#invite_open").click(alert("#invite_alert"));*/
+
+            $("#invite").click(function(){
+                $.ajax({
+                    type: "GET",
+                    url: "/invite_cv/[[${cv.id}]]"
+                }).done(function( msg ) {
+                    $("#invite_btn").html("<span style='color:blue'>Приглашение отправлено</span>");
+                });
+            });
+        });
+        /*]]>*/
+    </script>
+</head>
+<body>
+<!--<div id="invite_alert">
+    <form action="#" >
+    <div class="checkbox" th:each="vacancy: ${vacancies}">
+        <label  th:text="${vacancy.name}">Продажи</label>
+        <input type="checkbox" th:field="${vacancies}" th:value="${vacancy.id}"/>
+    </div>
+    <button type="submit" id="invite" class="btn-success">Ok</button>
+    </form>
+</div>-->
+
+<div class="container" style="min-width: 1000px">
+    <div th:include="layout :: header(${cv})"></div>
+    <h3 th:text="${cv.title}">Менеджер</h3>
+    <h5><a th:href="'/user/' + ${cv.owner.id}" th:text="${cv.owner.name}">Иван Иванович</a></h5>
+
+        <div class="jumbotron" style="padding: 10px 30px 20px">
+            <div class="row">
+                <div class="col-xs-3"><h4>Образование</h4><h5  th:text="${cv.education}">среднее</h5></div>
+                <div class="col-xs-2"><h4>Опыт</h4><h5 th:text="${cv.experience}">2 года</h5></div>
+                <div class="col-xs-2"><h4>Город</h4><h5 th:text="${cv.owner.city}">Казань</h5></div>
+                <div class="col-xs-3"><h4>username</h4><h5 th:text="${cv.owner.username}">mail@gmail.com</h5></div>
+                <div class="col-xs-2"><h4>Телефон</h4><h5 th:text="${cv.owner.phone}">123456</h5></div>
+            </div>
+        </div>
+
+    <p th:text="${cv.text}"></p>
+    <span id="invite_btn"> <a class="btn btn-primary btn-lg" role="button" id="invite">Отправить приглашение</a></span>
+    <a class="btn btn-primary btn-lg" th:href="${'/cv/edit/'+cv.id}">Редактировать</a>
+    <a class="btn btn-primary btn-lg" th:href="${'/cv/delete/'+cv.id}">Удалить</a>
+
+
+
+</div>
+</body>
+</html>

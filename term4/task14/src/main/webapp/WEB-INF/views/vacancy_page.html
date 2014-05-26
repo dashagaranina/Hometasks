@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HH</title>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container" style="min-width: 1000px">
+    <div th:include="layout :: header(vacancy)"></div>
+    <h3 th:text="${vacancy.title}">Менеджер</h3>
+    <h5><a th:href="'/company/' + ${vacancy.company.id}" th:text="${vacancy.company.name}">Иван Иванович</a></h5>
+
+    <div class="jumbotron" style="padding: 10px 30px 20px">
+        <div class="row">
+            <div class="col-xs-3"><h4>Образование</h4><h5  th:text="${vacancy.salary}">123456</h5></div>
+            <div class="col-xs-2"><h4>Опыт</h4><h5 th:text="${vacancy.experience}">2 года</h5></div>
+            <div class="col-xs-2"><h4>Город</h4><h5 th:text="${vacancy.company.city}">Казань</h5></div>
+            <div class="col-xs-3"><h4>Email</h4><h5 th:text="${vacancy.company.email}">mail@gmail.com</h5></div>
+        </div>
+    </div>
+
+    <p th:text="${vacancy.description}"></p>
+    <a class="btn btn-primary btn-lg" role="button">Отправить приглашение</a>
+
+</div>
+</body>
+</html>

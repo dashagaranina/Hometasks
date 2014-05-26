@@ -1,0 +1,13 @@
+package dao;
+
+import model.Category;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: Dasha
+ * Date: 01.03.14
+ * Time: 0:43
+ * To change this template use File | Settings | File Templates.
+ */
+public interface CategoryDao extends BaseDao<Category, Long> {
+}

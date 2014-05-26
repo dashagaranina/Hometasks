@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config />
+    <context:component-scan base-package="foo.bar"/>
+
+    <bean name="landlordPeter" class="foo.bar.Landlord">
+        <constructor-arg name="name" value="Peter"/>
+    </bean>
+
+    <bean name="landladyMary" class="foo.bar.Landlord">
+        <constructor-arg name="name" value="Mary"/>
+    </bean>
+
+    <bean class="foo.bar.House">
+        <property name="landlord" ref="landlordPeter"/>
+    </bean>
+
+    <bean class="foo.bar.Kommunalka">
+        <constructor-arg name="landlord" ref="landladyMary"/>
+        <property name="tenants">
+            <list>
+                <ref bean="John"/>
+                <ref bean="Jeck"/>
+                <ref bean="Jessy"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="foo.bar.Tenant" name="John">
+        <constructor-arg name="name" value="John"/>
+    </bean>
+
+    <bean class="foo.bar.Tenant" name="Jeck">
+        <constructor-arg name="name" value="Jeck"/>
+    </bean>
+
+    <bean class="foo.bar.Tenant" name="Jessy">
+        <constructor-arg name="name" value="Jessy"/>
+    </bean>
+
+</beans>

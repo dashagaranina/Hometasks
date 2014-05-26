@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HH</title>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container" style="min-width: 1000px">
+    <div th:include="layout :: header(cv)"></div>
+    <h3 th:text="${cv.spec}">Менеджер</h3>
+ <!--   <h5><a th:href="'/user/' + ${cv.owner.id}" th:text="${cv.owner.name}">Иван Иванович</a></h5>-->
+
+    <div class="jumbotron" style="padding: 10px 30px 20px">
+        <div class="row">
+            <div class="col-xs-3"><h4>Специальность</h4><h5  th:text="${cv.spec}">программист</h5></div>
+            <div class="col-xs-3"><h4>Пол</h4><h5 th:text="${cv.gender}">male</h5></div>
+            <div class="col-xs-3"><h4>Город</h4><h5 th:text="${cv.city}">Казань</h5></div>
+            <div class="col-xs-3"><h4>Email</h4><h5 th:text="${cv.birthDate}">22/09/89</h5></div>
+        </div>
+    </div>
+
+    <p th:text="${cv.cvText}"></p>
+    <a class="btn btn-primary btn-lg" role="button">Отправить приглашение</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HH</title>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+    <div th:include="layout :: header(user)"></div>
+    <h3 th:text="${user.name}"></h3>
+    <dl class="dl-horizontal">
+        <dt>Name:</dt>
+        <dd th:text="${user.name}">name</dd>
+        <dt>Surname:</dt>
+        <dd th:text="${user.surname}">surname</dd>
+    </dl>
+    <ul class="list-unstyled">
+        <li th:each="cv : ${user.cv}"><a th:href="'/cv/' + ${cv.id}" th:text="${cv.spec}">Менеджер</a></li>
+    </ul>
+</div>
+</body>
+</html>
